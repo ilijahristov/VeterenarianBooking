@@ -1,8 +1,12 @@
 .header {
-  width: 100%;
-  background: #ffffff;
-  border-bottom: 1px solid #e2e8e2;
+  width: 100vw;
+  background: rgba(255, 255, 255, 0.0);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   padding: 0 24px;
+  position: relative;
+  z-index: 10;
 }
 
 .header-inner {
@@ -21,20 +25,20 @@
   align-items: center;
   gap: 10px;
   text-decoration: none;
-  color: #2d7a4f;
+  color: #ffffff;
   flex-shrink: 0;
 }
 
 .brand-icon {
   width: 36px;
   height: 36px;
-  color: #2d7a4f;
+  color: #ffffff;
 }
 
 .brand-name {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #2d7a4f;
+  color: #ffffff;
   letter-spacing: -0.02em;
   font-family: 'Segoe UI', system-ui, sans-serif;
 }
@@ -49,7 +53,7 @@
 .nav-link {
   font-size: 0.95rem;
   font-weight: 500;
-  color: #4a4a6a;
+  color: rgba(255, 255, 255, 0.75);
   text-decoration: none;
   padding-bottom: 4px;
   border-bottom: 2px solid transparent;
@@ -58,12 +62,12 @@
 }
 
 .nav-link:hover {
-  color: #2d7a4f;
+  color: #ffffff;
 }
 
 .nav-link.active {
-  color: #2d7a4f;
-  border-bottom-color: #2d7a4f;
+  color: #ffffff;
+  border-bottom-color: #ffffff;
 }
 
 /* Actions */
@@ -78,9 +82,9 @@
   padding: 8px 18px;
   font-size: 0.875rem;
   font-weight: 600;
-  color: #2d7a4f;
+  color: #ffffff;
   background: transparent;
-  border: 1.5px solid #2d7a4f;
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
   border-radius: 6px;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
@@ -88,8 +92,8 @@
 }
 
 .btn-signout:hover {
-  background: #2d7a4f;
-  color: #ffffff;
+  background: #ffffff;
+  color: #1a0533;
 }
 
 /* Avatar */
@@ -98,8 +102,8 @@
   height: 40px;
   border-radius: 50%;
   overflow: hidden;
-  background: #e8f5ee;
-  border: 2px solid #2d7a4f;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -115,6 +119,6 @@
 .avatar-initials {
   font-size: 0.8rem;
   font-weight: 700;
-  color: #2d7a4f;
+  color: #ffffff;
   font-family: 'Segoe UI', system-ui, sans-serif;
 }

@@ -1,0 +1,17 @@
+.news-landing {
+  padding: 64px 48px;
+  background: #f7f9f7;
+}
+
+.news-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #111111;
+  margin-bottom: 32px;
+}
+
+.news-grid {
+  display: flex;
+  gap: 24px;
+  align-items: stretch;
+}
