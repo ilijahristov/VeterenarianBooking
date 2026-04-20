@@ -1,17 +1,57 @@
 .news-landing {
   padding: 64px 48px;
-  background: #f7f9f7;
+  position: relative;
+  overflow: hidden;
+}
+
+.news-landing::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #420742 0%, #6b0f6e  10%, #c0392b 100%);
+  filter: blur(12px);
+  transform: scale(1.05);
+  z-index: 0;
 }
 
 .news-title {
   font-size: 1.75rem;
   font-weight: 800;
-  color: #111111;
+  color: #ffffff;
   margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
 }
 
 .news-grid {
   display: flex;
   gap: 24px;
   align-items: stretch;
+  position: relative;
+  z-index: 1;
+}
+
+.news-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  padding: 0;
+}
+
+.dot.active {
+  background: #ffffff;
+  transform: scale(1.3);
 }
