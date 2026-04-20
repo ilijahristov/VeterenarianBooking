@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, signal, computed } from '@angular/core';
+import { Component, OnInit, OnDestroy, signal, computed, ElementRef, ViewChild } from '@angular/core';
 import { CardComponent } from '../card/card';
 import { CommonModule } from '@angular/common';
 
@@ -20,19 +20,21 @@ export class NewsLandingComponent implements OnInit, OnDestroy {
     { thumbnail: 'https://placehold.co/400x200', date: 'Mar 20, 2025', author: 'FurFirst Animal Care',  title: 'Senior Pet Wellness Month',        summary: 'This month we are offering free senior pet screenings for dogs and cats aged 8 and over. Limited slots available.' },
   ];
 
-  visibleCount = 3;
+  readonly gap = 24;
+  readonly visibleCount = 3;
+  readonly totalSlides = this.cards.length - this.visibleCount;
+
   currentIndex = signal(0);
+  animated = signal(true);
 
-  visibleCards = computed(() =>
-    this.cards.slice(this.currentIndex(), this.currentIndex() + this.visibleCount)
+  trackTransform = computed(() =>
+    `translateX(calc(-${this.currentIndex()} * (100% / ${this.visibleCount} + ${this.gap / this.visibleCount}px)))`
   );
-
-  totalSlides = computed(() => this.cards.length - this.visibleCount + 1);
 
   private interval: ReturnType<typeof setInterval> | null = null;
 
   ngOnInit() {
-    this.interval = setInterval(() => this.next(), 8000);
+    this.interval = setInterval(() => this.next(), 5000);
   }
 
   ngOnDestroy() {
@@ -40,10 +42,18 @@ export class NewsLandingComponent implements OnInit, OnDestroy {
   }
 
   next() {
-    this.currentIndex.update(i => i + 1 >= this.totalSlides() ? 0 : i + 1);
+    if (this.currentIndex() >= this.totalSlides) {
+      this.animated.set(false);
+      this.currentIndex.set(0);
+      setTimeout(() => this.animated.set(true), 50);
+    } else {
+      this.animated.set(true);
+      this.currentIndex.update(i => i + 1);
+    }
   }
 
   goTo(index: number) {
+    this.animated.set(true);
     this.currentIndex.set(index);
   }
 }

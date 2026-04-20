@@ -1,0 +1,79 @@
+.services {
+  position: relative;
+  overflow: hidden;
+  padding: 80px 48px;
+  display: flex;
+  flex-direction: column;
+}
+
+.services-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(6px) brightness(0.5);
+  transform: scale(1.05);
+  z-index: 0;
+}
+
+.services-overlay {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+}
+
+.services-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+.services-grid {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.service-card {
+  flex: 1;
+  background: linear-gradient(135deg, #420742 0%, #370738 30%, #c0392b 100%);
+  border-radius: 16px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.service-card:hover {
+  transform: scale(1.04);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+}
+
+.service-emoji {
+  font-size: 2.25rem;
+  line-height: 1;
+}
+
+.service-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.service-description {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.65;
+  margin: 0;
+}

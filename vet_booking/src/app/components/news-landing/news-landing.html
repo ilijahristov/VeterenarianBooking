@@ -1,18 +1,26 @@
 <section class="news-landing">
   <h2 class="news-title">Latest News & Offers</h2>
-  <div class="news-grid">
-    @for (card of visibleCards(); track card.title) {
-      <app-card
-        [thumbnail]="card.thumbnail"
-        [date]="card.date"
-        [author]="card.author"
-        [title]="card.title"
-        [summary]="card.summary"
-      />
-    }
+  <div class="news-viewport">
+    <div
+      class="news-track"
+      [style.transform]="trackTransform()"
+      [style.transition]="animated() ? 'transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none'"
+    >
+      @for (card of cards; track card.title) {
+        <div class="news-slide">
+          <app-card
+            [thumbnail]="card.thumbnail"
+            [date]="card.date"
+            [author]="card.author"
+            [title]="card.title"
+            [summary]="card.summary"
+          />
+        </div>
+      }
+    </div>
   </div>
   <div class="news-dots">
-    @for (dot of [].constructor(totalSlides()); track $index) {
+    @for (dot of [].constructor(totalSlides + 1); track $index) {
       <button
         class="dot"
         [class.active]="$index === currentIndex()"

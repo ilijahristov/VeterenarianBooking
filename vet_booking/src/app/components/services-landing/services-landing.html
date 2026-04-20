@@ -1,0 +1,15 @@
+<section class="services">
+  <div class="services-bg" [style.background-image]="'url(' + heroBg + ')'"></div>
+  <div class="services-overlay">
+    <h2 class="services-title">What Can You Book?</h2>
+    <div class="services-grid">
+      @for (service of services; track service.title) {
+        <div class="service-card" [style.background]="service.gradient">
+          <span class="service-emoji">{{ service.emoji }}</span>
+          <h3 class="service-title">{{ service.title }}</h3>
+          <p class="service-description">{{ service.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>

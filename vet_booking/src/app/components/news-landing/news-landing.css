@@ -23,12 +23,21 @@
   z-index: 1;
 }
 
-.news-grid {
-  display: flex;
-  gap: 24px;
-  align-items: stretch;
+.news-viewport {
+  overflow: hidden;
   position: relative;
   z-index: 1;
+}
+
+.news-track {
+  display: flex;
+  gap: 24px;
+  will-change: transform;
+}
+
+.news-slide {
+  flex: 0 0 calc((100% - 48px) / 3);
+  min-width: 0;
 }
 
 .news-dots {
