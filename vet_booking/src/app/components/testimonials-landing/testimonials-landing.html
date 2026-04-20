@@ -1,0 +1,35 @@
+<section class="testimonials">
+  <div class="testimonials-bg" [style.background-image]="'url(' + heroBg + ')'"></div>
+  <div class="testimonials-overlay">
+    <h2 class="testimonials-title">What Pet Owners Say</h2>
+    <div class="testimonials-viewport">
+      <div
+        class="testimonials-track"
+        [style.transform]="trackTransform()"
+        [style.transition]="animated() ? 'transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none'"
+      >
+        @for (t of testimonials; track t.name) {
+          <div class="testimonial-slide">
+            <div class="testimonial-card">
+              <div class="card-header">
+                <img class="avatar" [src]="t.avatar" [alt]="t.name" />
+                <span class="owner-name">{{ t.name }}</span>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+              </div>
+              <blockquote class="quote">"{{ t.quote }}"</blockquote>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+    <div class="testimonials-dots">
+      @for (dot of testimonials; track dot.name; let i = $index) {
+        <button
+          class="dot"
+          [class.active]="i === currentIndex()"
+          (click)="goTo(i)"
+        ></button>
+      }
+    </div>
+  </div>
+</section>
