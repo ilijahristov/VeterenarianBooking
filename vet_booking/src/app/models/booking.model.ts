@@ -6,6 +6,7 @@ export interface Booking {
     petName: string;
     petType: 'dog' | 'cat' | 'bird' | 'rabbit' | 'other';
     date: string;
+    time: string;
     reason: 'checkup' | 'vaccine' | 'grooming' | 'emergency' | 'other';
     textArea: string;
     status: 'pending' | 'accepted' | 'rejected';

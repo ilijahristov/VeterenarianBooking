@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>VetBooking</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="page-layout">
+  <!-- Лева колона -->
+  <aside class="sidebar-left">
+    <!-- Профил картичка -->
+  <div class="profile-card">
+    <div class="profile-header">
+      <div class="profile-avatar">👤</div>
+      <div>
+        <p class="profile-label">Welcome back,</p>
+        <p class="profile-name">Sandra Damcheva</p>
+      </div>
+    </div>
+    <div class="profile-pets">
+      <span class="pets-label">Active Pets</span>
+      <span class="pets-badge">4</span>
+    </div>
+  </div>
+
+
+  <!-- Промо картичка -->
+<div class="promo-card">
+  <div class="promo-glow"></div>
+
+  <div class="promo-content">
+    <span class="promo-badge">Limited Offer</span>
+
+    <h3 class="promo-title">VetWorld <span class="promo-title-accent">Skopje</span></h3>
+
+    <div class="promo-details">
+      <p class="promo-desc"><span class="promo-discount">20% Off</span> Full Heart Checkups</p>
+      <p class="promo-valid">Valid until May 1st</p>
+    </div>
+
+    <button class="promo-btn">
+      Book Slot
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+      </svg>
+    </button>
+  </div>
+</div>
+
+  <!-- Партнер клиники -->
+  <div class="clinics-card">
+    <p class="clinics-title">Partner Clinics</p>
+
+    <div class="clinic-item">
+      <div class="clinic-icon">🐾</div>
+      <div>
+        <p class="clinic-name">VetWorld Skopje</p>
+        <p class="clinic-status open">Open 24/7</p>
+      </div>
+    </div>
+
+    <div class="clinic-item">
+      <div class="clinic-icon">🦒</div>
+      <div>
+        <p class="clinic-name">City Zoo Clinic</p>
+        <p class="clinic-status closes">Closes at 20:00</p>
+      </div>
+    </div>
+
+    <button class="clinics-btn">View All Clinics</button>
+  </div>
+  </aside>
+
+  <!-- Главна колона -->
+  <main class="main-content">
+    <!-- Чекор 7: Header -->
+  <div class="main-header">
+    <div>
+      <h1 class="main-title">My bookings</h1>
+      <p class="main-subtitle">All your veterinary appointments in one place</p>
+    </div>
+    <button class="new-btn">+ New Appointment</button>
+  </div>
+
+  <!-- Чекор 8: Статистики -->
+  <!-- <div class="stats-grid">
+    <div class="stat-card">
+      <span class="stat-label">Total</span>
+      <p class="stat-value">4</p>
+    </div>
+    <div class="stat-card stat-card--active">
+      <span class="stat-label stat-label--active">Upcoming</span>
+      <p class="stat-value stat-value--active">2</p>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Completed</span>
+      <p class="stat-value">1</p>
+    </div>
+  </div> -->
+  <div class="stats-grid">
+  <div class="stat-card"
+       [class.stat-card--active]="activeCard === 'total'"
+       (click)="setActiveCard('total')">
+    @if (activeCard === 'total') { <div class="stat-dot"></div> }
+    <span class="stat-label" [class.stat-label--active]="activeCard === 'total'">Total</span>
+    <p class="stat-value" [class.stat-value--active]="activeCard === 'total'">{{ totalCount }}</p>
+  </div>
+
+  <div class="stat-card"
+       [class.stat-card--active]="activeCard === 'upcoming'"
+       (click)="setActiveCard('upcoming')">
+    @if (activeCard === 'upcoming') { <div class="stat-dot"></div> }
+    <span class="stat-label" [class.stat-label--active]="activeCard === 'upcoming'">Upcoming</span>
+    <p class="stat-value" [class.stat-value--active]="activeCard === 'upcoming'">{{ upcomingCount }}</p>
+  </div>
+
+  <div class="stat-card"
+       [class.stat-card--active]="activeCard === 'completed'"
+       (click)="setActiveCard('completed')">
+    @if (activeCard === 'completed') { <div class="stat-dot"></div> }
+    <span class="stat-label" [class.stat-label--active]="activeCard === 'completed'">Completed</span>
+    <p class="stat-value" [class.stat-value--active]="activeCard === 'completed'">{{ completedCount }}</p>
+  </div>
+</div>
+
+  <!-- Филтри -->
+<div class="filters-row">
+  <div class="filters-tabs">
+    <button class="tab" [class.tab--active]=" activeStatus==='all'" (click)="setActiveStatus('all')" >All</button>
+    <button class="tab" [class.tab--active]=" activeStatus==='pending'" (click)="setActiveStatus('pending')" >Pending</button>
+    <button class="tab" [class.tab--active]=" activeStatus==='accepted'" (click)="setActiveStatus('accepted')" >Accepted</button>
+    <button class="tab" [class.tab--active]=" activeStatus==='rejected'" (click)="setActiveStatus('rejected')" >Rejected</button>
+  </div>
+
+  <select class="pets-select" (change)="onPetChange($event)">
+  @for (pet of pets; track pet) {
+    <option [value]="pet === 'All' ? 'all' : pet.toLowerCase()">
+      @if (pet === 'All') { My Pets: All } @else { {{ pet }} }
+    </option>
+  }
+</select>
+</div>
+
+<!-- Booking картички -->
+<div class="bookings-list">
+  @for (booking of filtered; track booking.id) {
+    <div class="booking-card" [class.booking-card--upcoming]="isUpcoming(booking)" [class.booking-card--past]="!isUpcoming(booking)">
+      <div class="booking-icon">{{ petIcon(booking.petType) }}</div>
+      <div class="booking-info">
+        <h3 class="booking-pet">{{ booking.petName }}</h3>
+        <div class="booking-meta">
+          <span>🏥 {{ booking.clinicName }}</span>
+          <span class="dot"></span>
+          <span class="booking-reason">{{ booking.reason }}</span>
+        </div>
+      </div>
+      <div class="booking-right">
+        <p class="booking-date">{{ booking.date }}</p>
+        <p class="booking-time">{{ booking.time }}</p>
+        <span class="booking-badge" [class]="booking.status">{{ booking.status }}</span>
+      </div>
+    </div>
+  }
+</div>
+
+  </main>
+
+  <!-- Десна колона -->
+  <aside class="sidebar-right">
+  <!-- Daily Health Tip -->
+  <div class="tip-card">
+    <p class="tip-label">Daily Health Tip</p>
+    <h3 class="tip-title">Hydration is key!</h3>
+    <p class="tip-text">It's 25°C in Skopje today. Pets need extra water when it's warm.</p>
+  </div>
+
+  <!-- Sponsored -->
+  <div class="sponsored-card">
+    <span class="sponsored-label">Sponsored</span>
+    <div class="sponsored-img">
+      <span class="sponsored-tag">Fresh Stock</span>
+    </div>
+    <div class="sponsored-body">
+      <h4 class="sponsored-title">GourmetPaw <span class="sponsored-accent">Market</span></h4>
+      <div class="sponsored-offer">
+        <p class="sponsored-offer-title">Buy 5kg Get 1kg Free</p>
+        <p class="sponsored-offer-sub">On all grain-free recipes</p>
+      </div>
+      <button class="sponsored-btn">Order Food</button>
+    </div>
+  </div>
+
+  <!-- Trending -->
+  <div class="trending-card">
+    <p class="trending-label">Trending Topics</p>
+    <div class="trending-list">
+      <a href="#" class="trending-link">Handling summer anxiety in pets.</a>
+      <hr class="trending-divider">
+      <a href="#" class="trending-link">Tick protection for 2026.</a>
+    </div>
+  </div>
+</aside>
+</div>
+</body>
+</html>
+
