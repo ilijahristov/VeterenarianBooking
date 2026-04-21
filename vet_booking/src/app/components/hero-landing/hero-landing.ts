@@ -9,5 +9,5 @@ import { HeaderComponent } from '../header/header';
   styleUrl: './hero-landing.css'
 })
 export class HeroLandingComponent {
-  heroBg = '/asset/dogs-and-cats-peeking-over-web-banner-free-photo.jpg';
+  heroBg = '/asset/hero.avif';
 }

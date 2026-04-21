@@ -43,6 +43,16 @@
   font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
+.brand-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand-container:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
 /* Nav */
 .nav {
   display: flex;

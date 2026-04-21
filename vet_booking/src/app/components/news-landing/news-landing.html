@@ -6,7 +6,7 @@
       [style.transform]="trackTransform()"
       [style.transition]="animated() ? 'transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none'"
     >
-      @for (card of cards; track card.title) {
+      @for (card of displayCards; track $index) {
         <div class="news-slide">
           <app-card
             [thumbnail]="card.thumbnail"
@@ -23,7 +23,7 @@
     @for (dot of [].constructor(totalSlides + 1); track $index) {
       <button
         class="dot"
-        [class.active]="$index === currentIndex()"
+        [class.active]="$index === activeDotIndex()"
         (click)="goTo($index)"
       ></button>
     }
