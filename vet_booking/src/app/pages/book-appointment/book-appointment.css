@@ -1,0 +1,117 @@
+/* Главната позадина на целата страна */
+.booking-page-wrapper {
+  background: linear-gradient(135deg, #1a0533 0%, #6b0f6e 50%, #c0392b 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+/* Стаклен ефект (Glassmorphism) за картичките */
+.glass-card {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px);
+  border: none;
+  border-radius: 20px !important;
+}
+
+/* Специфичен панел за датум и време (внатре во формата) */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.15); /* Проѕирно бела */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+}
+
+/* БОИ ЗА ТЕКСТОТ (Барање: Црна и Сива) */
+.glass-panel h5 {
+  color: #000000 !important; /* Црна за "Select Date & Time" */
+  font-weight: 700;
+}
+
+.glass-panel p.text-white-50 {
+  color: #6c757d !important; /* Сива за подтекстот */
+}
+
+.glass-panel h6 {
+  color: #000000 !important; /* Црна за "Available Times" */
+}
+
+/* КАЛЕНДАР КОНТЕЈНЕР */
+.calendar-container {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 5px;
+}
+
+/* ФИКС ЗА ВИДЛИВОСТ НА ДАТУМИТЕ */
+::ng-deep .mat-calendar-body-cell-content {
+  color: #333 !important; /* Црни бројки во календарот */
+  font-weight: 500 !important;
+}
+
+::ng-deep .mat-calendar-period-button, 
+::ng-deep .mat-calendar-table-header th {
+  color: #000 !important; /* Црни наслови во календарот */
+}
+
+::ng-deep .mat-calendar-body-selected {
+  background-color: #28a745 !important; /* Зелена за селектиран датум */
+  color: white !important;
+}
+
+/* КОПЧИЊА ЗА ВРЕМЕ */
+.time-slot-btn {
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  margin: 5px;
+  padding: 10px 15px;
+  min-width: 110px;
+  font-weight: 500;
+  color: #333;
+  transition: all 0.2s;
+}
+
+.time-slot-btn:hover {
+  border-color: #28a745;
+  background-color: #f8fff9;
+}
+
+.time-slot-btn.active {
+  background: #28a745 !important;
+  color: white !important;
+  border-color: #28a745;
+  box-shadow: 0 4px 8px rgba(40, 167, 69, 0.2);
+}
+
+/* ПОТВРДНО ПОЛЕ (Confirmation Box) */
+.confirmation-box {
+  background: #f0fff4;
+  border: 1px solid #c6f6d5;
+  border-radius: 10px;
+}
+
+/* ГЛАВНО КОПЧЕ ЗА BOOKING */
+.btn-success {
+  background-color: #28a745 !important;
+  border: none !important;
+  padding: 15px !important;
+  transition: transform 0.2s;
+}
+
+.btn-success:hover:not(:disabled) {
+  background-color: #218838 !important;
+  transform: translateY(-2px);
+}
+
+.btn-success:disabled {
+  background-color: #6c757d !important;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ГРАДИЕНТ ТЕКСТ (WE CARE FOR YOUR PETS) */
+.text-custom-gradient {
+  color: #6b0f6e !important;
+  letter-spacing: 1px;
+}
