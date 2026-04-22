@@ -1,8 +1,19 @@
 body {
-  background-color: #f8fafc;
+  background: linear-gradient(135deg, #420742 0%, #6b0f6e 10%, #c0392b 100%);
+}
+
+.my-bookings-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.my-bookings-header {
+  flex: 0 0 auto;
 }
 
 .page-layout {
+  flex: 1;
   display: grid;
   grid-template-columns: 0.90fr 2.2fr 0.90fr;
   gap: 2rem;
@@ -152,7 +163,7 @@ body {
 }
 
 .promo-card {
-  background-image: url('/kuche.jpg');
+  background-image: url('/assets/kuche.jpg');
   background-size: cover;
   background-position: center;
   border-radius: 2rem;
@@ -637,7 +648,7 @@ body {
 }
 
 .sponsored-img {
-  background-image: url('/jadat.jpeg');
+  background-image: url('/assets/jadat.jpeg');
   border-top-left-radius: 2rem;
   border-top-right-radius: 2rem;
   background-size: cover;

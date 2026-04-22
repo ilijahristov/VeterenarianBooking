@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BookingService } from '../../services/book-appointemntService';
-import { Router } from '@angular/router';
+import { Router} from '@angular/router';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-
+import { HeaderComponent } from '../../components/header/header';
+import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-book-appointment',
   standalone: true,
@@ -15,7 +16,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     ReactiveFormsModule,
     MatNativeDateModule,
     MatCardModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    HeaderComponent,
+    RouterOutlet
   ],
   templateUrl: './book-appointment.html',
   styleUrl: './book-appointment.css',

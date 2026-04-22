@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './services-landing.css'
 })
 export class ServicesLandingComponent {
-  heroBg = '/asset/services.webp';
+  heroBg = '/assets/services.webp';
 
   private randomGradient(): string {
     const angle = Math.floor(Math.random() * 60) + 110;

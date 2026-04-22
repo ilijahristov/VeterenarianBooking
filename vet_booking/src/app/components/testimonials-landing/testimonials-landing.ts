@@ -14,17 +14,17 @@ export class TestimonialsLandingComponent implements OnInit, OnDestroy {
   testimonials = [
     {
       name: 'Aleksandar Dodevski',
-      avatar: '/asset/pfp_male1.avif',
+      avatar: '/assets/pfp_male1.avif',
       quote: 'This app saved me multiple trips to the veterinarian and now I don\'t have to deal with multiple calls to the vet. Everything is handled in minutes.'
     },
     {
       name: 'Teo Blagojevski',
-      avatar: '/asset/pfp_male2.webp',
+      avatar: '/assets/pfp_male2.webp',
       quote: 'I used to spend a lot of time going back and forth with the vet. Now I can do it all with just a few clicks.'
     },
     {
       name: 'Marija Stojkovska',
-      avatar: '/asset/pfp_female.jpg',
+      avatar: '/assets/pfp_female.jpg',
       quote: 'Between work and the kids I never had time to sort out vet visits. This app completely changed that — I booked my cat\'s vaccination on the bus ride home.'
     },
   ];

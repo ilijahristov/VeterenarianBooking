@@ -3,6 +3,16 @@
   background: linear-gradient(135deg, #1a0533 0%, #6b0f6e 50%, #c0392b 100%);
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
+}
+
+.booking-page-header {
+  flex: 0 0 auto;
+}
+
+.booking-page-content {
+  flex: 1;
+  display: flex;
   align-items: center;
 }
 
