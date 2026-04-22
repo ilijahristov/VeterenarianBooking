@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { Booking } from '../../models/booking.model';
 import { HeaderComponent } from '../../components/header/header';
-import { RouterOutlet } from '@angular/router';
+import { FooterComponent } from '../../components/footer/footer';
 @Component({
   selector: 'app-my-bookings',
   standalone: true,
-  imports: [HeaderComponent, RouterOutlet],
+  imports: [HeaderComponent, FooterComponent],
   templateUrl: './my-bookings.html',
   styleUrl: './my-bookings.css',
 })

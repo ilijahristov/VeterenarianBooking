@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BookAppointment } from './book-appointment';
 import { HeaderComponent } from '../../components/header/header';
+import { FooterComponent } from '../../components/footer/footer';
 import { RouterOutlet } from '@angular/router';
 describe('BookAppointment', () => {
   let component: BookAppointment;
@@ -9,7 +10,7 @@ describe('BookAppointment', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BookAppointment, HeaderComponent, RouterOutlet],
+      imports: [BookAppointment, HeaderComponent, RouterOutlet, FooterComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(BookAppointment);

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-services-landing',
@@ -7,6 +8,8 @@ import { Component } from '@angular/core';
   styleUrl: './services-landing.css'
 })
 export class ServicesLandingComponent {
+  private router = inject(Router);
+
   heroBg = '/assets/services.webp';
 
   private randomGradient(): string {
@@ -27,26 +30,34 @@ export class ServicesLandingComponent {
     {
       emoji: '🩺',
       title: 'Check-up',
+      routeReason: 'General Checkup',
       gradient: this.randomGradient(),
       description: 'Is your pet due for a routine check? Book a full wellness examination with your favourite clinic and keep your pet in top health.'
     },
     {
       emoji: '💉',
       title: 'Vaccination',
+      routeReason: 'Vaccination',
       gradient: this.randomGradient(),
       description: 'Keep your pet protected. Schedule their next vaccination with a trusted local vet and stay ahead of seasonal threats.'
     },
     {
       emoji: '✂️',
       title: 'Grooming',
+      routeReason: 'Grooming',
       gradient: this.randomGradient(),
       description: 'Your pet needs its nails cut or a fresh trim? Book an appointment with your favourite clinic for a full pamper session.'
     },
     {
       emoji: '🚨',
       title: 'Emergency Visit',
+      routeReason: 'Emergency',
       gradient: this.randomGradient(),
       description: 'When every second counts, book an urgent emergency visit instantly. Our partner clinics are ready to help right away.'
     },
   ];
+
+  bookService(reason: string): void {
+    this.router.navigate(['/book-appointment'], { queryParams: { reason } });
+  }
 }

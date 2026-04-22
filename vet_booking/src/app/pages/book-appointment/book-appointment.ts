@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BookingService } from '../../services/book-appointemntService';
 import { Router} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { HeaderComponent } from '../../components/header/header';
-import { RouterOutlet } from '@angular/router';
+import { FooterComponent } from '../../components/footer/footer';
 @Component({
   selector: 'app-book-appointment',
   standalone: true,
@@ -17,8 +18,8 @@ import { RouterOutlet } from '@angular/router';
     MatNativeDateModule,
     MatCardModule,
     MatDatepickerModule,
-    HeaderComponent,
-    RouterOutlet
+    HeaderComponent,  
+    FooterComponent
   ],
   templateUrl: './book-appointment.html',
   styleUrl: './book-appointment.css',
@@ -33,7 +34,7 @@ export class BookAppointment implements OnInit {
   reasons: string[] = ['General Checkup', 'Vaccination', 'Surgery', 'Dental Care', 'Emergency', 'Grooming', 'Consultation', 'Other'];
   clinics: string[] = ['City Vet Clinic', 'Happy Paws Hospital', 'Central Veterinary Center', 'Animal Care East', 'Emergency Pet Care'];
 
-  constructor(private fb: FormBuilder, private bookingService: BookingService, private router: Router) {}
+  constructor(private fb: FormBuilder, private bookingService: BookingService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.bookingForm = this.fb.group({
@@ -46,6 +47,13 @@ export class BookAppointment implements OnInit {
       reason: ['', Validators.required],
       description: ['', Validators.maxLength(500)], 
       status: ['Reserved', Validators.required]
+    });
+
+    this.route.queryParamMap.subscribe(params => {
+      const reason = params.get('reason');
+      if (reason) {
+        this.bookingForm.patchValue({ reason });
+      }
     });
   }
 
