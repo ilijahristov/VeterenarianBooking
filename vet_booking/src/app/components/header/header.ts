@@ -10,13 +10,20 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './header.css',
 })
 export class HeaderComponent {
-  profileInitials = 'JD';
-  profileImageSrc = '';
+  isMobileMenuOpen = false;
 
   constructor(private auth: AuthService, private router: Router) {}
 
+  toggleMobileMenu(): void {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  closeMobileMenu(): void {
+    this.isMobileMenuOpen = false;
+  }
+
   onSignOut(): void {
-    console.log('Sign out clicked');
+    this.closeMobileMenu();
     this.auth.logout();
     this.router.navigate(['login']);
   }
