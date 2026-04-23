@@ -1,0 +1,195 @@
+
+
+<div class="page-wrapper">
+  <div class="top-bar">
+    <button onclick="history.back()" class="back-btn">
+      <span class="back-icon">←</span>
+      Back to Dashboard
+    </button>
+    
+    <div class="top-actions">
+        @if(!isUpcoming()){
+            <button class="btn-primary" (click)="printPDF()">Print PDF</button>
+        }
+        @else{
+            <button class="btn-secondary2">CANCEL APPOINTMENT</button>
+        }
+    </div>
+  </div>
+
+  @if (booking) {
+  <div class="content-grid">
+
+    <!-- ЛЕВА КОЛОНА -->
+    <div class="left-col">
+      <div class="pet-card">
+        <div class="pet-card-bar"></div>
+        <div class="pet-emoji">{{ petIcon() }}</div>
+        <h2 class="pet-name">{{ booking.petName }}</h2>
+        <p class="pet-breed">{{ booking.petType }}</p>
+
+        @if (review) {
+        <div class="health-score">
+          <p class="health-label">General Health Score</p>
+          <div class="health-value">{{ review.healthScore }}<span class="health-max">/10</span></div>
+          <div class="health-bar">
+            <div class="health-fill" [style.width.%]="review.healthScore * 10"></div>
+          </div>
+        </div>
+
+        <div class="pet-stats">
+          <div class="pet-stat">
+            <span class="stat-key">Weight</span>
+            <span class="stat-val">{{ review.weight }} kg</span>
+          </div>
+          <div class="pet-stat">
+            <span class="stat-key">Activity</span>
+            <span class="stat-val"
+              [class.green]="review.activity === 'high'"
+              [class.orange]="review.activity === 'medium'"
+              [class.red]="review.activity === 'low'">
+              {{ review.activity }}
+            </span>
+          </div>
+        </div>
+        } @else{
+            <div class="countdown-box">
+    <p class="countdown-label">Arriving in</p>
+    <div class="countdown-timer">
+      <div class="countdown-unit">
+        {{ countdown().days }}<span class="countdown-sub">Days</span>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit">
+        {{ countdown().hours }}<span class="countdown-sub">Hrs</span>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit">
+        {{ countdown().minutes }}<span class="countdown-sub">Min</span>
+      </div>
+    </div>
+  </div>
+        }
+
+        
+      </div>
+
+      @if (!isUpcoming()){
+        <div class="prescription-card">
+        <p class="prescription-label">Digital Prescription</p>
+        <div class="prescription-body">
+          <div class="qr-box">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Prescription{{booking.id}}" alt="QR">
+          </div>
+          <div>
+            <p class="prescription-text">Show this QR at any Partner Pharmacy</p>
+            <p class="prescription-code">Code: #VET-{{ booking.id }}921</p>
+          </div>
+        </div>
+        <div class="prescription-icon">💊</div>
+      </div>
+    
+      }
+      </div>
+      
+
+    <!-- ДЕСНА КОЛОНА -->
+    <div class="right-col">
+      <div class="report-card">
+        <div class="report-bg-icon">📄</div>
+        <div class="report-inner">
+          <div class="report-header">
+            <div>
+              <span class="report-badge">Doctor's Review</span>
+              <h1 class="report-title">Medical Report</h1>
+              <p class="report-clinic">🏥 Clinic: <span class="report-clinic-name">{{ booking.clinicName }}</span></p>
+            </div>
+            <div class="report-date-box">
+              <p class="report-ref-label">Booking ID</p>
+              <p class="report-ref">#BK-{{ booking.id }}</p>
+            </div>
+          </div>
+
+          @if (review) {
+          <div class="findings-section">
+            <h4 class="findings-title">
+              Findings & Observations
+              <span class="findings-line"></span>
+            </h4>
+            <div class="findings-box">
+              <p class="findings-text">"{{ review.description }}"</p>
+            </div>
+          </div>
+
+          @if (medication) {
+          <div class="treatment-section">
+            <h4 class="treatment-title">Prescribed Treatment</h4>
+            <div class="treatment-card">
+              <div class="treatment-icon-box">
+                <img src="https://cdn-icons-png.flaticon.com/512/822/822143.png" alt="Medication" class="treatment-img">
+              </div>
+              <div class="treatment-info">
+                <p class="treatment-name">{{ medication.name }}</p>
+                <p class="treatment-note">"{{ medication.note }}"</p>
+              </div>
+              <!-- <button class="treatment-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1M16 7l-4-4-4 4M12 3v13" />
+                </svg>
+              </button> -->
+            </div>
+          </div>
+          }
+          }
+
+          @if (!review) {
+          <div class="no-review">
+            <p class="no-review-icon">🕐</p>
+            <p class="no-review-title">No review yet</p>
+            <p class="no-review-sub">The doctor hasn't added a review yet.</p>
+          </div>
+          }
+        </div>
+      </div>
+
+      @if(!isUpcoming()){
+        <div class="timeline-card">
+        <h4 class="timeline-title">Visit Timeline</h4>
+        <div class="timeline">
+          <div class="timeline-line"></div>
+          <div class="timeline-item">
+            <div class="timeline-dot-wrapper green">
+              <div class="timeline-dot green"></div>
+            </div>
+            <div class="timeline-content">
+              <p class="timeline-event">Check-in & Vitals</p>
+              <p class="timeline-time">{{ booking.time }}</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot-wrapper green">
+              <div class="timeline-dot green"></div>
+            </div>
+            <div class="timeline-content">
+              <p class="timeline-event">Physical Examination</p>
+              <p class="timeline-time">{{ addMinutes(booking.time, 15) }}</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot-wrapper indigo">
+              <div class="timeline-dot indigo"></div>
+            </div>
+            <div class="timeline-content indigo">
+              <p class="timeline-event indigo">{{ booking.reason | titlecase }}</p>
+              <p class="timeline-time indigo">{{ addMinutes(booking.time, 30) }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      }
+      
+    </div>
+
+  </div>
+  }
+</div>

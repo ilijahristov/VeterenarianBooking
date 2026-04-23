@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Booking } from '../../models/booking.model';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-my-bookings',
@@ -9,10 +10,40 @@ import { Booking } from '../../models/booking.model';
   styleUrl: './my-bookings.css',
 })
 export class MyBookings {
+  constructor(private router: Router, private route: ActivatedRoute) {}
+
+  // plus
+  ngOnInit() {
+  this.route.queryParams.subscribe(params => {
+    if (params['card']) {
+      this.activeCard = params['card'];
+    }
+  });
+}
+// end plus
+
+  goToBookAppointment() {
+  this.router.navigate(['/book-appointment']);
+}
+
+goToDetail(id: string) {
+  this.router.navigate(['/booking-detail', id]);
+}
+
+
   activeCard: 'total' | 'upcoming' | 'completed' | null = 'upcoming';
 
   setActiveCard(card: 'total' | 'upcoming' | 'completed') {
-  this.activeCard = card;} 
+  this.activeCard = card;
+
+  //plus
+  this.router.navigate([], {
+    queryParams: { card },
+    queryParamsHandling: 'merge'
+  });
+  // end plus
+
+} 
 
   activeStatus: 'all' | 'pending' | 'accepted' | 'rejected' | null = 'all';
   
