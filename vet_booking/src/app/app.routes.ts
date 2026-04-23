@@ -32,6 +32,7 @@ export const routes: Routes = [
   { path: 'vet-care-center', component: VetCareCenter, canActivate: [authGuard] },
   
    { path: 'booking-detail/:id', component: BookingDetail, canActivate: [authGuard] },
+   { path: 'all-clinics', component: AllClinics, canActivate: [authGuard] },
 
 
   { path: '**', redirectTo: '' },
