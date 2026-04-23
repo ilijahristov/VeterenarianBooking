@@ -11,9 +11,12 @@ import { MyBookings } from './pages/my-bookings/my-bookings';
 export const routes: Routes = [
   { path: 'login', component: Login },
   { path: 'signup', component: Signup },
+
+  // comment out 3 paths below to avoid auth guard protection
   { path: '', component: LandingComponent, canActivate: [authGuard] },
   { path: 'book-appointment', component: BookAppointment, canActivate: [authGuard] },
   { path: 'my-bookings', component: MyBookings, canActivate: [authGuard] },
+
   { path: '**', redirectTo: '' },
 
   {
