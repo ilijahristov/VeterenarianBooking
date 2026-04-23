@@ -1,0 +1,118 @@
+/* --- Анимација за транзиција на страната --- */
+.page-container {
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-out {
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+}
+
+/* --- Галерија --- */
+.gallery-container img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.main-img img {
+  height: 408px;
+}
+
+.gallery-container img:hover {
+  transform: scale(1.02);
+  cursor: pointer;
+}
+
+/* --- Картички за услуги --- */
+.service-card {
+  background-color: #fff;
+  transition: all 0.3s ease;
+  border: 1px solid #eee !important;
+}
+
+.service-card:hover {
+  /* Го менуваме бордерот во боја од градиентот (средната виолетова) */
+  border-color: #6b0f6e !important; 
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+.service-card i {
+  display: block;
+  transition: transform 0.3s ease;
+  /* ГРАДИЕНТ НА ИКОНИТЕ */
+  background: linear-gradient(135deg, #1a0533 0%, #6b0f6e 50%, #c0392b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.service-card:hover i {
+  transform: scale(1.2);
+}
+
+/* --- Статус текст (Open/Closed) --- */
+.status-text {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+/* --- Десна картичка (Sticky Info) --- */
+.card.sticky-top {
+  border-radius: 15px;
+  background: #f8f9fa;
+  z-index: 10;
+}
+
+/* --- КОПЧЕ ЗА ЗАКАЖУВАЊЕ СО ГРАДИЕНТ --- */
+.btn-primary {
+  background: linear-gradient(135deg, #1a0533 0%, #6b0f6e 50%, #c0392b 100%) !important;
+  border: none !important;
+  transition: all 0.3s ease;
+  color: white !important;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.2); /* Малку посветло на hover */
+  box-shadow: 0 5px 15px rgba(107, 15, 110, 0.4);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* Боја на насловите за да одговара на темата */
+h1, h3, h4 {
+  color: #1a0533;
+}
+
+/* --- Прилагодување за мобилни уреди --- */
+@media (max-width: 768px) {
+  .main-img img {
+    height: 300px;
+  }
+  
+  .gallery-container img {
+    height: 150px;
+  }
+  
+  .sticky-top {
+    position: relative !important;
+    top: 0 !important;
+    margin-top: 2rem;
+  }
+}

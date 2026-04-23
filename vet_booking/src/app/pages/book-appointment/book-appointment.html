@@ -24,42 +24,91 @@
             <h4 class="mb-4 fw-bold">Appointment Details</h4>
             
             <div class="row g-3">
+
+              <!-- Owner -->
               <div class="col-md-6">
                 <label class="form-label fw-semibold">Owner Name</label>
-                <input class="form-control" formControlName="ownerName" placeholder="Your full name">
+                <input class="form-control"
+                       formControlName="ownerName"
+                       placeholder="Your full name"
+                       [class.is-invalid]="isInvalid('ownerName')">
+
+                <div *ngIf="isInvalid('ownerName')" class="text-danger small">
+                  {{ getError('ownerName') }}
+                </div>
               </div>
+
+              <!-- Clinic -->
               <div class="col-md-6">
                 <label class="form-label fw-semibold">Clinic</label>
-                <select class="form-select" formControlName="clinicName">
+                <select class="form-select"
+                        formControlName="clinicName"
+                        [class.is-invalid]="isInvalid('clinicName')">
                   <option value="">Select clinic</option>
                   <option *ngFor="let c of clinics">{{c}}</option>
                 </select>
+
+                <div *ngIf="isInvalid('clinicName')" class="text-danger small">
+                  {{ getError('clinicName') }}
+                </div>
               </div>
+
+              <!-- Pet Name -->
               <div class="col-md-6">
                 <label class="form-label fw-semibold">Pet Name</label>
-                <input class="form-control" formControlName="petName" placeholder="Max, Bella...">
+                <input class="form-control"
+                       formControlName="petName"
+                       placeholder="Max, Bella..."
+                       [class.is-invalid]="isInvalid('petName')">
+
+                <div *ngIf="isInvalid('petName')" class="text-danger small">
+                  {{ getError('petName') }}
+                </div>
               </div>
+
+              <!-- Pet Type -->
               <div class="col-md-6">
                 <label class="form-label fw-semibold">Pet Type</label>
-                <select class="form-select" formControlName="petType">
+                <select class="form-select"
+                        formControlName="petType"
+                        [class.is-invalid]="isInvalid('petType')">
                   <option value="">Select type</option>
                   <option *ngFor="let t of petTypes">{{t}}</option>
                 </select>
+
+                <div *ngIf="isInvalid('petType')" class="text-danger small">
+                  {{ getError('petType') }}
+                </div>
               </div>
 
+              <!-- Reason -->
               <div class="col-md-6">
                 <label class="form-label fw-semibold">Reason</label>
-                <select class="form-select" formControlName="reason">
+                <select class="form-select"
+                        formControlName="reason"
+                        [class.is-invalid]="isInvalid('reason')">
                   <option value="">Select reason</option>
                   <option *ngFor="let r of reasons">{{r}}</option>
                 </select>
+
+                <div *ngIf="isInvalid('reason')" class="text-danger small">
+                  {{ getError('reason') }}
+                </div>
               </div>
 
+              <!-- Description -->
               <div class="col-12">
                 <label class="form-label fw-semibold">Description</label>
-                <textarea class="form-control" rows="3" formControlName="description"></textarea>
+                <textarea class="form-control"
+                          rows="3"
+                          formControlName="description"
+                          [class.is-invalid]="isInvalid('description')"></textarea>
+
+                <div *ngIf="isInvalid('description')" class="text-danger small">
+                  {{ getError('description') }}
+                </div>
               </div>
-              
+
             </div>
 
             <div class="glass-panel p-4 mt-4 rounded-4">
@@ -75,12 +124,18 @@
                       (selectedChange)="onDateChange($event)">
                     </mat-calendar>
                   </div>
+
+                  <!-- DATE ERROR -->
+                  <div *ngIf="isInvalid('date')" class="text-danger small mt-2">
+                    {{ getError('date') }}
+                  </div>
                 </div>
 
                 <div class="col-md-7">
                   <h6 class="fw-bold text-white mb-3">Available Times</h6>
                   <div class="d-flex flex-wrap">
-                    <button type="button" *ngFor="let t of ['09:00 AM','10:00 AM','11:00 AM','12:00 PM','01:00 PM','02:00 PM','03:00 PM','04:00 PM','05:00 PM']"
+                    <button type="button"
+                            *ngFor="let t of ['09:00 AM','10:00 AM','11:00 AM','12:00 PM','01:00 PM','02:00 PM','03:00 PM','04:00 PM','05:00 PM']"
                             class="btn time-slot-btn"
                             [class.active]="selectedTime === t"
                             (click)="selectTime(t)">
@@ -88,18 +143,29 @@
                     </button>
                   </div>
 
-                  <div class="confirmation-box d-flex align-items-center p-3 rounded mt-4" *ngIf="selectedTime && bookingForm.get('date')?.value">
+                  <!-- TIME ERROR -->
+                  <div *ngIf="isInvalid('time')" class="text-danger small mt-2">
+                    {{ getError('time') }}
+                  </div>
+
+                  <div class="confirmation-box d-flex align-items-center p-3 rounded mt-4"
+                       *ngIf="selectedTime && bookingForm.get('date')?.value">
                     <i class="bi bi-check-circle-fill text-success fs-4 me-3"></i>
                     <div>
                       <p class="mb-0 text-muted small">Your appointment is on:</p>
-                      <strong class="text-dark">{{ bookingForm.get('date')?.value | date:'fullDate' }} at {{ selectedTime }}</strong>
+                      <strong class="text-dark">
+                        {{ bookingForm.get('date')?.value | date:'fullDate' }} at {{ selectedTime }}
+                      </strong>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <button *ngIf="!isSubmitting" type="submit" class="btn btn-success w-100 mt-4 py-3 fw-bold" [disabled]="bookingForm.invalid">
+            <button *ngIf="!isSubmitting"
+                    type="submit"
+                    class="btn btn-success w-100 mt-4 py-3 fw-bold"
+                    [disabled]="bookingForm.invalid || isSubmitting">
               Confirm Booking
             </button>
 
@@ -107,6 +173,7 @@
               <div class="spinner-border text-primary mb-2"></div>
               <h5 class="text-dark">Processing...</h5>
             </div>
+
           </form>
         </div>
       </div>

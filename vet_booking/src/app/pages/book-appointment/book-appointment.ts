@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BookingService } from '../../services/book-appointemntService';
-import { Router} from '@angular/router';
+import { Router,ActivatedRoute} from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
@@ -32,9 +32,9 @@ export class BookAppointment implements OnInit {
 
   petTypes: string[] = ['Dog', 'Cat', 'Rabbit', 'Hamster', 'Guinea Pig', 'Parrot', 'Turtle', 'Lizard', 'Snake', 'Ferret', 'Fish', 'Other'];
   reasons: string[] = ['General Checkup', 'Vaccination', 'Surgery', 'Dental Care', 'Emergency', 'Grooming', 'Consultation', 'Other'];
-  clinics: string[] = ['City Vet Clinic', 'Happy Paws Hospital', 'Central Veterinary Center', 'Animal Care East', 'Emergency Pet Care'];
+  clinics: string[] = ['Happy Pets Clinic', 'Vet Care Center', 'City Zoo Clinic', 'Happy Path East', 'Emergency Pet Care'];
 
-  constructor(private fb: FormBuilder, private bookingService: BookingService, private router: Router, private route: ActivatedRoute) {}
+  constructor(private fb: FormBuilder, private bookingService: BookingService, private router: Router) {}
 
   ngOnInit(): void {
     this.bookingForm = this.fb.group({
@@ -42,10 +42,10 @@ export class BookAppointment implements OnInit {
       clinicName: ['', Validators.required],
       petName: ['', Validators.required],
       petType: ['', Validators.required],
-      date: [null, Validators.required], // ПРОМЕНЕТО: null за почеток
-      time: ['', Validators.required],   // ДОДАДЕНО: мора да има време
+      date: [null, Validators.required],
+      time: ['', Validators.required],   
       reason: ['', Validators.required],
-      description: ['', Validators.maxLength(500)], 
+      description: ['', [Validators.required, Validators.maxLength(500)]],
       status: ['Reserved', Validators.required]
     });
 
@@ -55,11 +55,42 @@ export class BookAppointment implements OnInit {
         this.bookingForm.patchValue({ reason });
       }
     });
+
+    this.route.queryParamMap.subscribe(params => {
+    const clinicFromUrl = params.get('clinicName');
+    if (clinicFromUrl) {
+      // Автоматски ја пополнуваме клиниката во формата
+      this.bookingForm.patchValue({
+        clinicName: clinicFromUrl
+      });
+    }
+  });
   }
 
-  // ФУНКЦИЈА ЗА КАЛЕНДАРОТ
+  get f() {
+  return this.bookingForm.controls;
+}
+
+
+
+isInvalid(field: string): boolean {
+  const control = this.bookingForm.get(field);
+  return !!(control && control.touched && control.invalid);
+}
+
+getError(field: string): string {
+  const control = this.bookingForm.get(field);
+
+  if (!control || !control.touched) return '';
+
+  if (control.hasError('required')) return 'This field is required';
+  if (control.hasError('maxlength')) return 'Max 500 characters allowed';
+
+  return '';
+}
+
   onDateChange(newDate: Date | null): void {
-    this.selectedTime = ''; // Ресетирај време ако смени датум
+    this.selectedTime = ''; 
     this.bookingForm.patchValue({ 
       date: newDate,
       time: '' 
@@ -80,7 +111,8 @@ export class BookAppointment implements OnInit {
         this.router.navigate(['/my-bookings']); 
       }, 2000);
     } else {
-      this.bookingForm.markAllAsTouched();
+     this.bookingForm.markAllAsTouched();
+    this.bookingForm.updateValueAndValidity(); 
     }
   }
 }
