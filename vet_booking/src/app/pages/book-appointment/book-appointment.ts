@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BookingService } from '../../services/book-appointemntService';
 import { Router,ActivatedRoute} from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -34,7 +33,7 @@ export class BookAppointment implements OnInit {
   reasons: string[] = ['General Checkup', 'Vaccination', 'Surgery', 'Dental Care', 'Emergency', 'Grooming', 'Consultation', 'Other'];
   clinics: string[] = ['Happy Pets Clinic', 'Vet Care Center', 'City Zoo Clinic', 'Happy Path East', 'Emergency Pet Care'];
 
-  constructor(private fb: FormBuilder, private bookingService: BookingService, private router: Router) {}
+  constructor(private fb: FormBuilder, private bookingService: BookingService, private router: Router,private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.bookingForm = this.fb.group({
