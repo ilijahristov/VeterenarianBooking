@@ -86,7 +86,7 @@
       <h1 class="main-title">My bookings</h1>
       <p class="main-subtitle">All your veterinary appointments in one place</p>
     </div>
-    <button class="new-btn">+ New Appointment</button>
+    <button class="new-btn" (click)="goToBookAppointment()">+ New Appointment</button>
   </div>
 
   <!-- Чекор 8: Статистики -->
@@ -151,7 +151,7 @@
 <!-- Booking картички -->
 <div class="bookings-list">
   @for (booking of filtered; track booking.id) {
-    <div class="booking-card" [class.booking-card--upcoming]="isUpcoming(booking)" [class.booking-card--past]="!isUpcoming(booking)">
+    <div class="booking-card" (click)="goToDetail(booking.id)" [class.booking-card--upcoming]="isUpcoming(booking)" [class.booking-card--past]="!isUpcoming(booking)">
       <div class="booking-icon">{{ petIcon(booking.petType) }}</div>
       <div class="booking-info">
         <h3 class="booking-pet">{{ booking.petName }}</h3>
@@ -193,7 +193,16 @@
         <p class="sponsored-offer-title">Buy 5kg Get 1kg Free</p>
         <p class="sponsored-offer-sub">On all grain-free recipes</p>
       </div>
-      <button class="sponsored-btn">Order Food</button>
+      <!-- <button class="sponsored-btn">Order Food</button> -->
+       <a href="https://thegourmetpaw.com/" target="_blank" class="visit-store-btn">
+  Visit Online Store
+  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+  </svg>
+</a>
+<p class="linkk">www.thegourmetpaw.com</p>
+       
+
     </div>
   </div>
 
@@ -201,9 +210,9 @@
   <div class="trending-card">
     <p class="trending-label">Trending Topics</p>
     <div class="trending-list">
-      <a href="#" class="trending-link">Handling summer anxiety in pets.</a>
+      <a href="https://twinpinesvet.com/summer-anxiety-in-pets/" class="trending-link">Handling summer anxiety in pets.</a>
       <hr class="trending-divider">
-      <a href="#" class="trending-link">Tick protection for 2026.</a>
+      <a href="https://www.globalvetpro.com/The-Ultimate-Guide-to-Flea-and-Tick-Protection-in-2026?srsltid=AfmBOoq2GCepUVloJLvNdSHIA7RGBZ2906eK4_2QYo348cZRV6b8lbGg" class="trending-link">Tick protection for 2026.</a>
     </div>
   </div>
 </aside>

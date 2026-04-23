@@ -39,5 +39,13 @@ export const routes: Routes = [
     path: 'signup',
     loadComponent: () =>
       import('./pages/auth/signup/signup').then((m) => m.Signup)
+  },
+
+  {
+    path: 'booking-detail/:id',
+    loadComponent: () =>
+      import('./pages/booking-detail/booking-detail').then((m) => m.BookingDetail)
   }
+
+
 ];
