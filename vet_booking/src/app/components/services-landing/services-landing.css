@@ -77,3 +77,51 @@
   line-height: 1.65;
   margin: 0;
 }
+
+@media (max-width: 1024px) {
+  .services {
+    padding: 64px 32px;
+  }
+
+  .services-overlay {
+    gap: 36px;
+  }
+
+  .services-grid {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .service-card {
+    flex: 0 0 calc((100% - 20px) / 2);
+    padding: 28px 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .services {
+    padding: 48px 16px;
+  }
+
+  .services-title {
+    font-size: 1.6rem;
+  }
+
+  .services-grid {
+    gap: 14px;
+  }
+
+  .service-card {
+    flex: 0 0 100%;
+    padding: 22px 18px;
+    border-radius: 12px;
+  }
+
+  .service-emoji {
+    font-size: 1.9rem;
+  }
+
+  .service-title {
+    font-size: 1.1rem;
+  }
+}
