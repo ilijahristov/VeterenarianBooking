@@ -5,7 +5,6 @@ import { Signup } from './pages/auth/signup/signup';
 import { LandingComponent } from './pages/landing/landing';
 import { BookAppointment } from './pages/book-appointment/book-appointment';
 import { MyBookings } from './pages/my-bookings/my-bookings';
-import { BookingDetail } from './pages/booking-detail/booking-detail';
 
 import { AllClinics } from './pages/all-clinics/all-clinics';
 import { CityZooClinic } from './pages/city-zoo-clinic/city-zoo-clinic';
