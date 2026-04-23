@@ -6,26 +6,36 @@
       [style.transform]="trackTransform()"
       [style.transition]="animated() ? 'transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none'"
     >
-      @for (card of displayCards; track $index) {
-        <div class="news-slide">
-          <app-card
-            [thumbnail]="card.thumbnail"
-            [date]="card.date"
-            [author]="card.author"
-            [title]="card.title"
-            [summary]="card.summary"
-          />
+      @for (page of displayPages(); track $index) {
+        <div class="news-page">
+          @for (card of page; track card.title) {
+            <div class="news-slide">
+              <app-card
+                [thumbnail]="card.thumbnail"
+                [date]="card.date"
+                [author]="card.author"
+                [title]="card.title"
+                [summary]="card.summary"
+              />
+            </div>
+          }
         </div>
       }
     </div>
   </div>
   <div class="news-dots">
-    @for (dot of [].constructor(totalSlides + 1); track $index) {
+    @if (showArrows()) {
+      <button class="dot-arrow" (click)="prev()" [disabled]="currentPage() === 0">&#8249;</button>
+    }
+    @for (dotIndex of dotWindow(); track dotIndex) {
       <button
         class="dot"
-        [class.active]="$index === activeDotIndex()"
-        (click)="goTo($index)"
+        [class.active]="dotIndex === currentPage()"
+        (click)="goTo(dotIndex)"
       ></button>
+    }
+    @if (showArrows()) {
+      <button class="dot-arrow" (click)="next()">&#8250;</button>
     }
   </div>
 </section>
