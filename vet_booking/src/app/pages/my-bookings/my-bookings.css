@@ -2,6 +2,66 @@ body {
   background: linear-gradient(135deg, #420742 0%, #6b0f6e 10%, #c0392b 100%);
 }
 
+/* .............................................................................................. */
+
+/* --- UPCOMING CARD --- */
+.booking-card--upcoming {
+  background: rgba(255, 255, 255, 0.8); /* Скоро бела, но пропушта малку од градиентот */
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.booking-card--upcoming:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 1); /* На hover станува чиста бела */
+  border-color: #f472b6; /* Добива розев раб за да отскокне */
+  /* Додаваме обоен сјај наместо само црна сенка */
+  box-shadow: 0 20px 40px rgba(244, 114, 182, 0.2); 
+}
+
+/* --- PAST CARD --- */
+.booking-card--past {
+  /* Користиме многу светла зелена со висок степен на проѕирност */
+  background: rgba(20, 184, 166, 0.15); 
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(45, 212, 191, 0.3);
+  /* Текстот внатре нека биде во многу светла минт нијанса */
+  color: #ccfbf1;
+  transition: all 0.4s ease;
+}
+
+.booking-card--past:hover {
+  /* При hover, картичката добива "сјај" наместо да побели целосно */
+  background: rgba(20, 184, 166, 0.25);
+  border-color: #2dd4bf;
+  transform: translateY(-3px);
+  /* Зелен неонски сјај кој одлично стои на темна подлога */
+  box-shadow: 0 10px 30px rgba(20, 184, 166, 0.3);
+}
+
+/* Стилизирање на иконата или ознаката за статус внатре */
+.status-badge--past {
+  background: #14b8a6;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+/* --- ДОПОЛНИТЕЛЕН ТРИК ЗА ТЕКСТОТ --- */
+/* Ако картичката е премногу бела и не се гледа текстот при hover */
+.booking-card--upcoming:hover h3, 
+.booking-card--upcoming:hover p {
+  color: #1e293b; /* Темен текст кога позадината е 100% бела */
+}
+
+
+/* ................................................................................................................... */
+
 .my-bookings-page {
   min-height: 100vh;
   display: flex;
@@ -324,14 +384,20 @@ body {
 
 .main-title {
   font-size: 2.35rem;
-  font-weight: 800;
-  color: #0f172a;
-  letter-spacing: -0.02em;
+  font-weight: 900;
+  color: #ffffff;
+  /* letter-spacing: -0.02em; */
+
+    /* text-transform: uppercase; */
+    /* letter-spacing: 2px; */
+    /* Нежна сенка што го имитира сјајот на светлина */
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.4), 
+                 0 0 40px rgba(255, 255, 255, 0.2);
 }
 
 .main-subtitle {
   font-size: 14px;
-  color: #64748b;
+  color: #97a2b2;
   font-style: italic;
   margin-top: 4px;
 }
@@ -528,7 +594,7 @@ body {
   margin-top: 4px;
   font-size: 14px;
   font-weight: 600;
-  color: #94a3b8;
+  color: #cfd7e0;
   font-style: italic;
 }
 
@@ -812,11 +878,35 @@ body {
 }
 
 .booking-card--past {
-  background: rgba(248, 250, 252, 0.6);
+  background: rgba(234, 244, 254, 0.6);
   border-color: #e2e8f0;
-  /* opacity: 0.75; */
+  opacity: 0.75; }
+
+  /* .booking-card--upcoming {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
 }
 
+.booking-card--upcoming:hover {
+  background: rgba(255, 255, 255, 1);
+  border-color: #f472b6;
+  transform: translateX(4px) scale(1.01);
+  box-shadow: 0 20px 25px -5px rgba(244, 114, 182, 0.2);
+}
+
+.booking-card--past {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+}
+
+.booking-card--past:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateX(4px) scale(1.01);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+} */
 
 .visit-store-btn {
   width: 100%;

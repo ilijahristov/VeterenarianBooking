@@ -13,6 +13,7 @@ import { EmergencyPetClinic } from './pages/emergency-pet-clinic/emergency-pet-c
 import { HappyPathClinic } from './pages/happy-path-clinic/happy-path-clinic';
 import { HappyPetsClinic } from './pages/happy-pets/happy-pets';
 import { VetCareCenter } from './pages/vet-care-center/vet-care-center';
+import { BookingDetail } from './pages/booking-detail/booking-detail';
 
 
 // canActivate: [authGuard] for route protection
@@ -21,9 +22,9 @@ export const routes: Routes = [
   { path: 'signup', component: Signup },
 
   // comment out 4 paths below to avoid auth guard protection
-  { path: '', component: LandingComponent, canActivate: [authGuard] },
-  { path: 'book-appointment', component: BookAppointment, canActivate: [authGuard] },
-  { path: 'my-bookings', component: MyBookings, canActivate: [authGuard] },
+   { path: '', component: LandingComponent, canActivate: [authGuard] },
+   { path: 'book-appointment', component: BookAppointment, canActivate: [authGuard] },
+   { path: 'my-bookings', component: MyBookings, canActivate: [authGuard] },
   { path: 'booking-detail/:id', component: BookingDetail, canActivate: [authGuard] },
   { path: 'city-zoo-clinic', component: CityZooClinic, canActivate: [authGuard] },
   { path: 'emergency-pet-clinic', component: EmergencyPetClinic, canActivate: [authGuard] },
@@ -31,8 +32,12 @@ export const routes: Routes = [
   { path: 'happy-pets', component: HappyPetsClinic, canActivate: [authGuard] },
   { path: 'vet-care-center', component: VetCareCenter, canActivate: [authGuard] },
   
+   { path: 'booking-detail/:id', component: BookingDetail, canActivate: [authGuard] },
+
 
   { path: '**', redirectTo: '' },
+
+  
 
   {
     path: 'my-bookings',
@@ -92,7 +97,10 @@ export const routes: Routes = [
     path: 'booking-detail/:id',
     loadComponent: () =>
       import('./pages/booking-detail/booking-detail').then((m) => m.BookingDetail)
-  }
+  },
+
+
+  
 
 
 ];
