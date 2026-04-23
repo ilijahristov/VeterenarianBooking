@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,11 @@ export class HeaderComponent {
   profileInitials = 'JD';
   profileImageSrc = '';
 
+  constructor(private auth: AuthService, private router: Router) {}
+
   onSignOut(): void {
     console.log('Sign out clicked');
+    this.auth.logout();
+    this.router.navigate(['login']);
   }
 }
