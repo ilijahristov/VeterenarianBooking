@@ -5,6 +5,7 @@ import { Signup } from './pages/auth/signup/signup';
 import { LandingComponent } from './pages/landing/landing';
 import { BookAppointment } from './pages/book-appointment/book-appointment';
 import { MyBookings } from './pages/my-bookings/my-bookings';
+import { BookingDetail } from './pages/booking-detail/booking-detail';
 
 
 // canActivate: [authGuard] for route protection
@@ -13,11 +14,15 @@ export const routes: Routes = [
   { path: 'signup', component: Signup },
 
   // comment out 3 paths below to avoid auth guard protection
-  { path: '', component: LandingComponent, canActivate: [authGuard] },
-  { path: 'book-appointment', component: BookAppointment, canActivate: [authGuard] },
-  { path: 'my-bookings', component: MyBookings, canActivate: [authGuard] },
+   { path: '', component: LandingComponent, canActivate: [authGuard] },
+   { path: 'book-appointment', component: BookAppointment, canActivate: [authGuard] },
+   { path: 'my-bookings', component: MyBookings, canActivate: [authGuard] },
+   { path: 'booking-detail/:id', component: BookingDetail, canActivate: [authGuard] },
+
 
   { path: '**', redirectTo: '' },
+
+  
 
   {
     path: 'my-bookings',
@@ -45,7 +50,10 @@ export const routes: Routes = [
     path: 'booking-detail/:id',
     loadComponent: () =>
       import('./pages/booking-detail/booking-detail').then((m) => m.BookingDetail)
-  }
+  },
+
+
+  
 
 
 ];
