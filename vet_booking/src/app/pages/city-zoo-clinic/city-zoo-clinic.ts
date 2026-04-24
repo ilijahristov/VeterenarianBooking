@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
 import { CommonModule } from '@angular/common'; 
+import { HeaderComponent } from '../../components/header/header';
+import { FooterComponent } from '../../components/footer/footer';
 
 @Component({
   selector: 'app-city-zoo-clinic',
   standalone: true, 
-  imports: [CommonModule], 
+  imports: [CommonModule,HeaderComponent,FooterComponent], 
   templateUrl: './city-zoo-clinic.html',
   styleUrls: ['./city-zoo-clinic.css']
 })

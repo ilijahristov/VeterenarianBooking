@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { HeaderComponent } from '../../components/header/header';
 import { FooterComponent } from '../../components/footer/footer';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-book-appointment',
   standalone: true,
@@ -101,17 +102,57 @@ getError(field: string): string {
     this.bookingForm.patchValue({ time: time });
   }
 
+  // onSubmit(): void {
+  //   if (this.bookingForm.valid) {
+  //     this.isSubmitting = true; 
+      
+  //     setTimeout(() => {
+  //       this.bookingService.saveAppointment(this.bookingForm.value);
+  //       this.isSubmitting = false;
+  //       this.router.navigate(['/my-bookings']); 
+  //     }, 2000);
+  //   } else {
+  //    this.bookingForm.markAllAsTouched();
+  //   this.bookingForm.updateValueAndValidity(); 
+  //   }
+  // }
+
   onSubmit(): void {
-    if (this.bookingForm.valid) {
-      this.isSubmitting = true; 
-      setTimeout(() => {
-        this.bookingService.saveAppointment(this.bookingForm.value);
+  if (this.bookingForm.valid) {
+    this.isSubmitting = true;
+
+    this.bookingService.saveAppointment(this.bookingForm.value);
+
+    Swal.fire({
+      title: 'Appointment Booked! ✅',
+      text: 'Your visit has been successfully reserved. We look forward to seeing you and your pet!',
+      icon: 'success',
+      showCancelButton: false,
+      confirmButtonText: 'View My Bookings',
+      confirmButtonColor: '#6b0f6e', 
+      background: '#ffffff',
+      heightAuto: false, 
+      customClass: {
+        popup: 'rounded-20',
+        confirmButton: 'rounded-pill px-4 py-2'
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
         this.isSubmitting = false;
-        this.router.navigate(['/my-bookings']); 
-      }, 2000);
-    } else {
-     this.bookingForm.markAllAsTouched();
-    this.bookingForm.updateValueAndValidity(); 
-    }
+        this.router.navigate(['/my-bookings']);
+      }
+    });
+
+  } else {
+    this.bookingForm.markAllAsTouched();
+    this.bookingForm.updateValueAndValidity();
+    
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Please fill in all required fields correctly.',
+      confirmButtonColor: '#c0392b'
+    });
   }
+}
 }

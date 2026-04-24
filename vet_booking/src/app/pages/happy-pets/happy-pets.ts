@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
-import { CommonModule } from '@angular/common'; // ОВА Е ВАЖНО ЗА *ngFor
+import { CommonModule } from '@angular/common'; 
+import { HeaderComponent } from '../../components/header/header';
+import { FooterComponent } from '../../components/footer/footer';
 
 @Component({
   selector: 'app-happy-pets',
   standalone: true, 
-  imports: [CommonModule], 
+  imports: [CommonModule,HeaderComponent,FooterComponent], 
   templateUrl: './happy-pets.html',
   styleUrls: ['./happy-pets.css']
 })
