@@ -16,6 +16,14 @@
   margin-top: 0%;
 }
 
+.hero-subtitle {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: clamp(0.5rem, 1em, 2rem);
+  font-weight: 600;
+  color: #ffffff;
+  text-shadow: 0 2px 12px rgba(255, 255, 255, 0.4);
+  letter-spacing: -0.02em;
+}
 P {
   color: #ffffff;
   font-size: clamp(0.5rem, 1rem, 5rem);
@@ -53,12 +61,23 @@ P {
 }
 
 .hero-title {
-  
-  font-size: clamp(1rem, 4vw, 8.5rem);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: clamp(1rem, 3vw, 8.5rem);
   font-weight: 800;
   color: #ffffff;
   text-shadow: 0 2px 12px rgba(255, 255, 255, 0.4);
   letter-spacing: -0.02em;
+}
+
+.hero-welcome {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: clamp(1rem, 2vw, 2.5rem);
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 2px 12px rgba(255, 255, 255, 0.4);
+  letter-spacing: -0.02em;
+  top: 7%;
+  position: relative;
 }
 
 .hero-content-inner {
