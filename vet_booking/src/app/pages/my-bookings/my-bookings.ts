@@ -186,6 +186,9 @@ isUpcoming(booking: Booking): boolean {
   return new Date(`${booking.date}T${booking.time}`) >= new Date();
 }
 
+viewAllClinics() {
+  this.router.navigate(['/all-clinics']);
+}
 
 selectedBooking: Booking | null = null;
 
@@ -196,12 +199,5 @@ openModal(booking: Booking) {
 closeModal() {
   this.selectedBooking = null;
 }
-
-
-
-
-
-
-
 
 }

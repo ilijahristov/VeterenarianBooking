@@ -1,4 +1,14 @@
-/* --- Анимација за транзиција на страната --- */
+/* --- Глобална позадина на целата компонента --- */
+:host {
+  display: block;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a0533 0%, #6b0f6e 50%, #c0392b 100%);
+  background-attachment: fixed;
+  color: white;
+  padding-bottom: 50px;
+}
+
+/* --- Главниот контејнер со транзиција --- */
 .page-container {
   transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
   opacity: 1;
@@ -17,6 +27,7 @@
   height: 200px;
   object-fit: cover;
   transition: transform 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .main-img img {
@@ -26,33 +37,17 @@
 .gallery-container img:hover {
   transform: scale(1.02);
   cursor: pointer;
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
-/* --- Картички за услуги --- */
-.service-card {
-  background-color: #fff;
-  transition: all 0.3s ease;
-  border: 1px solid #eee !important;
+/* --- Наслови и Текст --- */
+h1, h3, h4 {
+  color: #ffffff !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-.service-card:hover {
-  /* Го менуваме бордерот во боја од градиентот (средната виолетова) */
-  border-color: #6b0f6e !important; 
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
-}
-
-.service-card i {
-  display: block;
-  transition: transform 0.3s ease;
-  /* ГРАДИЕНТ НА ИКОНИТЕ */
-  background: linear-gradient(135deg, #1a0533 0%, #6b0f6e 50%, #c0392b 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.service-card:hover i {
-  transform: scale(1.2);
+.text-secondary, .text-muted {
+  color: rgba(255, 255, 255, 0.8) !important; /* Светло сивкаст текст за темна позадина */
 }
 
 /* --- Статус текст (Open/Closed) --- */
@@ -60,6 +55,11 @@
   display: flex;
   align-items: center;
   font-weight: 500;
+  background: rgba(255, 255, 255, 0.1);
+  width: fit-content;
+  padding: 5px 15px;
+  border-radius: 50px;
+  backdrop-filter: blur(5px);
 }
 
 .dot {
@@ -70,37 +70,71 @@
   margin-right: 8px;
 }
 
-/* --- Десна картичка (Sticky Info) --- */
-.card.sticky-top {
-  border-radius: 15px;
-  background: #f8f9fa;
-  z-index: 10;
-}
-
-/* --- КОПЧЕ ЗА ЗАКАЖУВАЊЕ СО ГРАДИЕНТ --- */
-.btn-primary {
-  background: linear-gradient(135deg, #1a0533 0%, #6b0f6e 50%, #c0392b 100%) !important;
-  border: none !important;
-  transition: all 0.3s ease;
+/* --- Картички за услуги (Glassmorphism) --- */
+.service-card {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   color: white !important;
 }
 
+.service-card:hover {
+  background: rgba(255, 255, 255, 0.18) !important;
+  transform: translateY(-8px);
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+.service-card i {
+  display: block;
+  transition: transform 0.3s ease;
+  /* Градиент на иконите со посветли бои за да се гледаат */
+  background: linear-gradient(135deg, #ffffff 0%, #f0a2ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.service-card p {
+  color: white !important;
+  margin-bottom: 0;
+}
+
+/* --- Десна картичка (Sticky Info) --- */
+.card.sticky-top {
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+  padding: 25px;
+}
+
+.card.sticky-top i {
+  color: #f0a2ff !important; /* Посветла боја за иконите во инфо делот */
+}
+
+/* --- Копче за закажување --- */
+.btn-primary {
+  background: linear-gradient(135deg, #f0a2ff 0%, #6b0f6e 100%) !important;
+  border: none !important;
+  transition: all 0.3s ease;
+  color: white !important;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
 .btn-primary:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.2); /* Малку посветло на hover */
-  box-shadow: 0 5px 15px rgba(107, 15, 110, 0.4);
+  transform: translateY(-3px);
+  filter: brightness(1.1);
+  box-shadow: 0 8px 20px rgba(107, 15, 110, 0.5);
 }
 
 .btn-primary:active {
-  transform: scale(0.98);
+  transform: scale(0.97);
 }
 
-/* Боја на насловите за да одговара на темата */
-h1, h3, h4 {
-  color: #1a0533;
-}
-
-/* --- Прилагодување за мобилни уреди --- */
+/* --- Прилагодување за мобилни --- */
 @media (max-width: 768px) {
   .main-img img {
     height: 300px;
