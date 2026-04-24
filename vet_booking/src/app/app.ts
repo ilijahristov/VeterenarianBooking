@@ -13,6 +13,7 @@ export class App implements OnInit, OnDestroy {
 
   constructor(private router: Router) {}
 
+  // on init scroll to top of the page
   ngOnInit() {
     this.routerSub = this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
@@ -25,6 +26,7 @@ export class App implements OnInit, OnDestroy {
       });
   }
 
+  // On destroy unsubscribe from the router events
   ngOnDestroy() {
     this.routerSub?.unsubscribe();
   }

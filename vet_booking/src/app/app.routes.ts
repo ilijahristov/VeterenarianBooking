@@ -20,16 +20,15 @@ export const routes: Routes = [
   { path: 'login', component: Login },
   { path: 'signup', component: Signup },
 
-  // comment out 4 paths below to avoid auth guard protection
    { path: '', component: LandingComponent, canActivate: [authGuard] },
    { path: 'book-appointment', component: BookAppointment, canActivate: [authGuard] },
    { path: 'my-bookings', component: MyBookings, canActivate: [authGuard] },
-  { path: 'booking-detail/:id', component: BookingDetail, canActivate: [authGuard] },
-  { path: 'city-zoo-clinic', component: CityZooClinic, canActivate: [authGuard] },
-  { path: 'emergency-pet-clinic', component: EmergencyPetClinic, canActivate: [authGuard] },
-  { path: 'happy-path-clinic', component: HappyPathClinic, canActivate: [authGuard] },
-  { path: 'happy-pets', component: HappyPetsClinic, canActivate: [authGuard] },
-  { path: 'vet-care-center', component: VetCareCenter, canActivate: [authGuard] },
+   { path: 'booking-detail/:id', component: BookingDetail, canActivate: [authGuard] },
+   { path: 'city-zoo-clinic', component: CityZooClinic, canActivate: [authGuard] },
+   { path: 'emergency-pet-clinic', component: EmergencyPetClinic, canActivate: [authGuard] },
+   { path: 'happy-path-clinic', component: HappyPathClinic, canActivate: [authGuard] },
+   { path: 'happy-pets', component: HappyPetsClinic, canActivate: [authGuard] },
+   { path: 'vet-care-center', component: VetCareCenter, canActivate: [authGuard] },
   
    { path: 'booking-detail/:id', component: BookingDetail, canActivate: [authGuard] },
    { path: 'all-clinics', component: AllClinics, canActivate: [authGuard] },
