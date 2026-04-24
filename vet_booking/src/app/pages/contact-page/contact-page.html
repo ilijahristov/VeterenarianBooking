@@ -14,30 +14,48 @@
     </div>
 
     <div class="card-content">
-      <form class="field-group" (ngSubmit)="onSubmit()" #f="ngForm">
+      <form
+        class="field-group"
+        (ngSubmit)="onSubmit()"
+        #f="ngForm"
+        [class.required-triggered]="
+          nameModel.invalid && nameModel.touched ||
+          emailModel.invalid && emailModel.touched ||
+          phoneModel.invalid && phoneModel.touched ||
+          clinicNameModel.invalid && clinicNameModel.touched
+        "
+      >
+        @if (
+          nameModel.invalid && nameModel.touched ||
+          emailModel.invalid && emailModel.touched ||
+          phoneModel.invalid && phoneModel.touched ||
+          clinicNameModel.invalid && clinicNameModel.touched
+        ) {
+          <p class="required-note">Fields marked in red are required.</p>
+        }
 
         <div class="field">
           <label class="field-label">Name *</label>
           <input class="field-input" type="text" placeholder="Your full name"
-                 [(ngModel)]="name" name="name" required />
+                 [(ngModel)]="name" name="name" required #nameModel="ngModel" />
         </div>
 
         <div class="field">
           <label class="field-label">Contact Email *</label>
           <input class="field-input" type="email" placeholder="you@clinic.com"
-                 [(ngModel)]="email" name="email" required />
+                 [(ngModel)]="email" name="email" required #emailModel="ngModel" />
         </div>
 
         <div class="field">
           <label class="field-label">Phone Number *</label>
           <input class="field-input" type="tel" placeholder="+389 00 000 000"
-                 [(ngModel)]="phone" name="phone" required />
+                 [(ngModel)]="phone" name="phone" required #phoneModel="ngModel" />
         </div>
 
         <div class="field">
           <label class="field-label">Clinic Name *</label>
           <input class="field-input" type="text" placeholder="Your Clinic Name"
-                 [(ngModel)]="clinicName" name="clinicName" required />
+                 [(ngModel)]="clinicName" name="clinicName" required #clinicNameModel="ngModel" />
         </div>
 
         <div class="field">

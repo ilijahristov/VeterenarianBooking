@@ -120,6 +120,13 @@
   color: rgba(255, 255, 255, 0.85);
 }
 
+.required-note {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #fca5a5;
+}
+
 .field-input {
   width: 100%;
   padding: 10px 14px;
@@ -132,6 +139,17 @@
   outline: none;
   transition: border-color 0.2s ease, background 0.2s ease;
   box-sizing: border-box;
+}
+
+/* Red underline appears only after invalid touch */
+.field-input[required].ng-invalid.ng-touched {
+  border-bottom: 2px solid rgba(239, 68, 68, 0.95);
+}
+
+/* When warning is triggered, highlight all required fields */
+.field-group.required-triggered .field-input[required] {
+  border-color: rgba(239, 68, 68, 0.85);
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
 }
 
 .field-input::placeholder {
