@@ -16,7 +16,7 @@ export class EmergencyPetClinic implements OnInit {
   clinic: any = {
     name: 'Emergency Pet Care',
     description: "Welcome to Emergency Pet Care, where your pet's health and happiness are our ultimate priority. As a state-of-the-art veterinary clinic, we combine years of clinical expertise with the latest medical technology to provide comprehensive care for your beloved companions. From routine preventative wellness exams to advanced surgical procedures and diagnostics, our dedicated team of professionals is committed to delivering expert medical assistance with love, compassion, and a personal touch. We believe in building lasting relationships with our clients and ensuring every patient feels safe and comfortable in our care.",
-    address: 'Ul. Mickel Nob, Hungary',
+    address: 'Ul. Jane Sandanski 66, Skopje',
     phone: '072 333 452',
     email: 'emergencypetcare@vet.mk',
     services: [

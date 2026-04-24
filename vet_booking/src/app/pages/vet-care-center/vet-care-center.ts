@@ -16,7 +16,7 @@ export class VetCareCenter implements OnInit {
   clinic: any = {
     name: 'Vet Care Center',
     description: "Welcome to Vet Care Center, your trusted local partner in comprehensive pet healthcare. For years, we have been dedicated to fostering a community where every animal receives expert medical attention in a warm and welcoming environment. Our clinic is equipped with modern diagnostic tools and a passionate team of specialists who treat every pet as if they were their own. Whether it’s a routine wellness visit, advanced dental care, or specialized surgery, we provide a full spectrum of veterinary services tailored to your pet's unique needs. At Vet Care Center, we don’t just treat patients; we nurture the special bond between you and your animal companions, ensuring they lead a long, vibrant, and healthy life.",
-    address: 'Ul. Bove 45, Paris',
+    address: 'Ul. Goce Delcev 6, Bitola',
     phone: '305 388 5622',
     email: 'vetcarecenter@vet.mk',
     services: [
