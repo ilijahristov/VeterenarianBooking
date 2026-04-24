@@ -39,14 +39,14 @@ export class AllClinics {
       id: 'emergency-pet-clinic',
       name: 'Emergency Pet Care',
       image: 'assets/hp3.png',
-      location: 'Ul. Mickel Nob, Hungary',
+      location: 'Ul. Jane Sandanski 66, Skopje',
       rating: 4.8
     },
     {
       id: 'vet-care-center',
       name: 'Vet Care Center',
       image: 'assets/vet1.png',
-      location: 'Ul. Bove 45, Pariz',
+      location: 'Ul. Goce Delcev 6, Bitola',
       rating: 4.78
     },
   ];
