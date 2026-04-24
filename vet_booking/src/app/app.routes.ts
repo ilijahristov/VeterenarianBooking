@@ -13,6 +13,7 @@ import { HappyPathClinic } from './pages/happy-path-clinic/happy-path-clinic';
 import { HappyPetsClinic } from './pages/happy-pets/happy-pets';
 import { VetCareCenter } from './pages/vet-care-center/vet-care-center';
 import { BookingDetail } from './pages/booking-detail/booking-detail';
+import { ContactPage } from './pages/contact-page/contact-page';
 
 
 // canActivate: [authGuard] for route protection
@@ -32,6 +33,7 @@ export const routes: Routes = [
   
    { path: 'booking-detail/:id', component: BookingDetail, canActivate: [authGuard] },
    { path: 'all-clinics', component: AllClinics, canActivate: [authGuard] },
+   { path: 'contact', component: ContactPage, canActivate: [authGuard] },
 
 
   { path: '**', redirectTo: '' },
