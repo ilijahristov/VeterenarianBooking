@@ -1,0 +1,92 @@
+.contact-cta {
+  position: relative;
+  overflow: hidden;
+  padding: 80px 48px;
+}
+
+.contact-cta-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(7px) brightness(0.7);
+}
+
+.contact-cta-overlay {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+}
+
+.contact-cta-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+  width: min(100%, 900px);
+  max-width: 900px;
+  padding: 40px 24px;
+}
+
+.contact-cta-text {
+  color: #fefefe;
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  flex: 1;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+
+.contact-cta-btn {
+  padding: 18px 32px;
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(135deg, #d44b34 0%, #bd2f26 50%, #9b181f 100%);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 8px 24px rgba(155, 24, 31, 0.35);
+}
+
+.contact-cta-btn:hover {
+  transform: scale(1.06);
+  box-shadow: 0 8px 28px rgba(107, 15, 110, 0.5);
+}
+
+@media (max-width: 1024px) {
+  .contact-cta {
+    padding: 64px 32px;
+  }
+
+  .contact-cta-inner {
+    gap: 28px;
+    padding: 32px 22px;
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-cta {
+    padding: 48px 16px;
+  }
+
+  .contact-cta-overlay {
+    min-height: 0;
+  }
+
+  .contact-cta-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+    padding: 26px 16px;
+  }
+
+  .contact-cta-btn {
+    width: 100%;
+  }
+}

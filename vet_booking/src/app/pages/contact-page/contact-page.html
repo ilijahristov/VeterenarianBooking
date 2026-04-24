@@ -1,0 +1,63 @@
+<div class="page">
+  <!-- Left image panel -->
+  <div class="page-img" [style.background-image]="'url(' + heroBg + ')'"></div>
+
+  <!-- Diagonal clip overlay that sits on top of the seam -->
+  <div class="page-clip"></div>
+
+  <!-- Form card, centred in front of everything -->
+  <div class="card">
+    <div class="card-header">
+      <button class="close-btn" (click)="goBack()" aria-label="Close">&#x2715;</button>
+      <h2 class="card-title">Get in Touch</h2>
+      <p class="card-description">Fill out the form below and we'll get back to you shortly.</p>
+    </div>
+
+    <div class="card-content">
+      <form class="field-group" (ngSubmit)="onSubmit()" #f="ngForm">
+
+        <div class="field">
+          <label class="field-label">Name *</label>
+          <input class="field-input" type="text" placeholder="Your full name"
+                 [(ngModel)]="name" name="name" required />
+        </div>
+
+        <div class="field">
+          <label class="field-label">Contact Email *</label>
+          <input class="field-input" type="email" placeholder="you@clinic.com"
+                 [(ngModel)]="email" name="email" required />
+        </div>
+
+        <div class="field">
+          <label class="field-label">Phone Number *</label>
+          <input class="field-input" type="tel" placeholder="+1 555 000 0000"
+                 [(ngModel)]="phone" name="phone" required />
+        </div>
+
+        <div class="field">
+          <label class="field-label">Clinic Name *</label>
+          <input class="field-input" type="text" placeholder="Happy Paws Clinic"
+                 [(ngModel)]="clinicName" name="clinicName" required />
+        </div>
+
+        <div class="field">
+          <label class="field-label">Questions / Message</label>
+          <textarea class="field-input field-textarea" placeholder="Tell us more..."
+                    [(ngModel)]="message" name="message" rows="4"></textarea>
+        </div>
+
+        <button class="btn btn-primary" type="submit" [disabled]="f.invalid">
+          Send
+        </button>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  @if (showToast()) {
+    <div class="toast">
+      <span class="toast-icon">&#10003;</span> Request has been sent!
+    </div>
+  }
+</div>

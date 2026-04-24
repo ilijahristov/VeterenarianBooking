@@ -16,11 +16,12 @@ import { TitleCasePipe } from '@angular/common';
 import { Booking } from '../../models/booking.model';
 import { DoctorReview} from '../../models/doctor_review.model';
 import { Medication } from '../../models/medication.model';
+import { FooterComponent } from '../../components/footer/footer';
 
 @Component({
   selector: 'app-booking-detail',
   standalone: true,
-  imports: [TitleCasePipe],
+  imports: [TitleCasePipe, FooterComponent],
   templateUrl: './booking-detail.html',
   styleUrl: './booking-detail.css',
 })
